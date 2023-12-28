@@ -6,7 +6,7 @@
             <img src="/assets/images/ill_login_new.png" alt="">
         </div>
         <div class="right">
-            <a href="{{ route('home') }}">
+            <a href="{{ route('welcome') }}">
                 <img src="/assets/images/logo.png" class="logo" alt="">
             </a>
             <h1 class="header-third">
