@@ -6,14 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Checkout;
 use Illuminate\Http\Request;
 use App\Models\Camp;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Facade\FlareClient\Http\Response;
 
 class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     *]
      */
     public function index()
     {
@@ -23,10 +23,13 @@ class CheckoutController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
-    public function create(Camp $camp)
+    public function create(Camp $camp, Request $request)
     {
+        if ($camp->isRegistered) {
+            $request->session()->flash('error', "You already registered on {$camp->title} camp.");
+            return redirect(route('dashboard'));
+        }
         return view('checkout.create', [
             'camp' => $camp
         ]);
@@ -35,8 +38,6 @@ class CheckoutController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Camp $camp)
     {
@@ -61,9 +62,6 @@ class CheckoutController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Models\checkout  $checkout
-     * @return \Illuminate\Http\Response
      */
     public function show(checkout $checkout)
     {
@@ -73,8 +71,6 @@ class CheckoutController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\checkout  $checkout
-     * @return \Illuminate\Http\Response
      */
     public function edit(checkout $checkout)
     {
@@ -84,9 +80,6 @@ class CheckoutController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\checkout  $checkout
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, checkout $checkout)
     {
@@ -96,8 +89,6 @@ class CheckoutController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\checkout  $checkout
-     * @return \Illuminate\Http\Response
      */
     public function destroy(checkout $checkout)
     {

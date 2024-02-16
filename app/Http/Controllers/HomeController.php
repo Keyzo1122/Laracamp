@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Checkout;
-use Auth;
+use illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {

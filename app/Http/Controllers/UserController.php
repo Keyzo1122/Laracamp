@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
-use Auth;
+use illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
