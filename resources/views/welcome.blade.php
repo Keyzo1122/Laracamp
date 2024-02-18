@@ -406,7 +406,7 @@
                     <div class="row copyright">
                         <div class="col-lg-12 col-12">
                             <p>
-                                All Rights Reserved. Copyright Laracamp BWA Indonesia.
+                                All Rights Reserved. Copyright Subkhan Dimas Pratama Putra.
                             </p>
                         </div>
                     </div>

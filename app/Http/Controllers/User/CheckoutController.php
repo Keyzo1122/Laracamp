@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\Checkout\Store;
 use App\Models\Checkout;
 use Illuminate\Http\Request;
 use App\Models\Camp;
@@ -39,9 +40,9 @@ class CheckoutController extends Controller
      * Store a newly created resource in storage.
      *
      */
-    public function store(Request $request, Camp $camp)
+    public function store(Store $request, Camp $camp)
     {
-
+        return $request->all();
         // mapping request data
         $data = $request->all();
         $data['user_id'] = Auth::id();
