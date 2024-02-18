@@ -5,7 +5,7 @@
     <br>
     Thankyou for Register on <b>{{ $checkout->Camp->title }}</b>, please see payment instruction by click the button bellow.
 
-    @component('mail::button', ['url' => route('user.checkout.invoice', $checkout->id)])
+    @component('mail::button', ['url' => route('dashboard')])
         Get Invoice
     @endcomponent
 
